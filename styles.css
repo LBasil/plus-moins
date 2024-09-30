@@ -1,83 +1,33 @@
 body {
-    font-family: 'Arial', sans-serif;
-    transition: background-color 1s ease;
+    background-color: #343a40;
+    color: #fff;
 }
 
-#game-title {
-    color: #f8d210;
-    animation: pulse-glow 1.5s infinite alternate;
+#guess-input.success {
+    border: 2px solid #28a745;
 }
 
-@keyframes pulse-glow {
-    from { text-shadow: 0 0 10px #f8d210, 0 0 20px #f8d210, 0 0 30px #f8d210; }
-    to { text-shadow: 0 0 20px #ff9100, 0 0 40px #ff9100, 0 0 60px #ff9100; }
-}
-
-input, button {
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-}
-
-input.success {
-    border: 3px solid green;
-    animation: correct-bounce 0.7s ease-out;
-}
-
-input.fail {
-    border: 3px solid red;
-    animation: wrong-shake 0.7s ease;
-}
-
-@keyframes correct-bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-20px); }
-    60% { transform: translateY(-10px); }
-}
-
-@keyframes wrong-shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-    75% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
-}
-
-#feedback {
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: opacity 0.5s;
+#guess-input.fail {
+    border: 2px solid #dc3545;
 }
 
 #feedback.success {
     color: #28a745;
-    opacity: 1;
-    animation: feedback-glow 0.8s ease-out;
 }
 
 #feedback.fail {
     color: #dc3545;
-    opacity: 1;
-    animation: feedback-shake 0.8s ease-out;
 }
 
-@keyframes feedback-glow {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.modal-content {
+    background-color: #212529;
+    color: #fff;
 }
 
-@keyframes feedback-shake {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.modal-header {
+    border-bottom: 1px solid #6c757d;
 }
 
-#boss-fight {
-    display: none;
-    font-size: 2rem;
-    color: red;
-    animation: boss-glow 1.5s infinite alternate;
-}
-
-@keyframes boss-glow {
-    from { text-shadow: 0 0 10px red; }
-    to { text-shadow: 0 0 20px yellow; }
+.modal-footer {
+    border-top: 1px solid #6c757d;
 }

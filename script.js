@@ -126,10 +126,11 @@ function handleBossModeGuess(guess) {
         feedbackElement.classList.add('fail');
         feedbackElement.classList.remove('success');
         document.body.style.backgroundColor = "#dc3545";  // Red background for fail
+        guessInput.classList.add('fail');
+
         lives--;
         livesElement.textContent = lives;
-        guessInput.classList.add('fail');
-        
+
         if (lives === 0) {
             feedbackElement.textContent = narration.gameOver;
             document.body.style.backgroundColor = "black";
@@ -139,33 +140,30 @@ function handleBossModeGuess(guess) {
 }
 
 function startBossFight() {
-    numberToGuess = Math.floor(Math.random() * 1000) + 1;
-    lives = 20;
     bossMode = true;
+    bossFightElement.classList.remove('d-none');
     narrationElement.textContent = narration.bossStart;
-    bossFightElement.style.display = 'block';
-    livesElement.textContent = lives;
-}
-
-function resetGame() {
-    numberToGuess = Math.floor(Math.random() * 100) + 1;
-    lives = maxAttempts;
+    numberToGuess = Math.floor(Math.random() * 1000) + 1;
     lowerBound = 1;
-    upperBound = 100;
+    upperBound = 1000;
+    lives = 20;
     livesElement.textContent = lives;
-    feedbackElement.textContent = "";
-    guessInput.classList.remove('success', 'fail');
-    guessInput.disabled = false;  // Enable input again
-    guessButton.disabled = false;  // Enable button again
-    document.body.style.backgroundColor = "#343a40";  // Reset background
+    document.body.style.backgroundColor = "#dc3545";
+    guessInput.disabled = false;
+    guessButton.disabled = false;
 }
 
 function showReplay() {
     replayButton.classList.remove('d-none');
-    guessInput.disabled = true;
-    guessButton.disabled = true;
+    replayButton.addEventListener('click', startGame);
 }
 
-replayButton.addEventListener('click', startGame);
+function resetGame() {
+    feedbackElement.textContent = "";
+    guessInput.classList.remove('success', 'fail');
+    document.body.style.backgroundColor = "#343a40";  // Background reset
+    guessInput.disabled = false;
+    guessButton.disabled = false;
+}
 
 startGame();
